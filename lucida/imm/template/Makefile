@@ -1,9 +1,9 @@
-include ../../Makefile.config
+CC_DIR=../../command-center/gen-cpp
 
 CXX = g++
 PROTO = protoc
 
-CXX_FLAGS = -I$(BOOST_LOCATION)
+CXX_FLAGS = -O2
 LINK_FLAGS = -L$(BOOST_LIB) \
 					-lopencv_core \
 					-lopencv_highgui \
@@ -28,11 +28,11 @@ TARGET_SERVER = imserver
 
 OBJECTS_CLIENT = ./gen-cpp/ImageMatchingService.o IMSClient.o 
 OBJECTS_SERVER = ./gen-cpp/ImageMatchingService.o \
-					../common/detect.o \
-					../common/kp_protobuf.o \
-					../common/keypoints.pb.cc \
-					../common/store_mat.pb.cc \
-					IMSDaemon.o
+								 ../common/detect.o \
+								 ../common/kp_protobuf.o \
+								 ../common/keypoints.pb.cc \
+								 ../common/store_mat.pb.cc \
+								 IMSDaemon.o
 
 # Needed for finding header files during preprocessing
 GEN_DIR = ./gen-cpp

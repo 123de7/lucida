@@ -1,5 +1,8 @@
 **/imserver
-**/input-1436194810956.jpg
-**/gen-**/
+**/input-*.jpg
+gen-**
 **/imclient
 **/imserver
+*.pb
+*.o
+

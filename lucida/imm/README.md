@@ -1,5 +1,6 @@
 # Image Matching
 ## Building Image Matching
+Depends on opencv-2.4.9/
 
 In `lucida`/ or `template/` run:
 ```
@@ -13,3 +14,4 @@ In either folder, run
 ```
 Note: that the template version does not have the cc_port argument because it
 does not register with the command center
+

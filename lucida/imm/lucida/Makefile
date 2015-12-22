@@ -1,3 +1,4 @@
+CC_DIR=../../command-center/gen-cpp
 CXX = g++
 PROTO = protoc
 # Needed for linking

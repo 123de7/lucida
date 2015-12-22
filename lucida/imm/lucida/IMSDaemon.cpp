@@ -77,20 +77,12 @@ class ImageMatchingServiceHandler : public ImageMatchingServiceIf {
 };
 
 int main(int argc, char **argv){
-	int port = 9082;
 	//Register with the command center 
-	int cmdcenterport = 8081;
-	if (argv[1]) {
-		port = atoi(argv[1]);
-	} else {
-		cout << "Using default port for imm..." << endl;
-	}
+	int port = 9082;
+  cout << "IMM port: " << port << endl;
 
-	if (argv[2]) {
-		cmdcenterport = atoi(argv[2]);
-	} else {
-		cout << "Using default port for cc..." << endl;
-	}
+	int ccport = 8081;
+  cout << "CC port: " << ccport << endl;
 
 	// initialize the transport factory
 	boost::shared_ptr<TTransportFactory> transportFactory(new TBufferedTransportFactory());
@@ -110,12 +102,10 @@ int main(int argc, char **argv){
 	// initialize the image matching server
 	TThreadPoolServer server(processor, serverTransport, transportFactory, protocolFactory, threadManager);
 
-	cout << "Starting the image matching server on port " << port << endl;
 	boost::thread *serverThread = new boost::thread(boost::bind(&TThreadPoolServer::serve, &server));
-	cout << "Done..." << endl;
 
 	//register with command center
-	boost::shared_ptr<TTransport> cmdsocket(new TSocket("localhost", cmdcenterport));
+	boost::shared_ptr<TTransport> cmdsocket(new TSocket("localhost", ccport));
 	boost::shared_ptr<TTransport> cmdtransport(new TBufferedTransport(cmdsocket));
 	boost::shared_ptr<TProtocol> cmdprotocol(new TBinaryProtocol(cmdtransport));
 	CommandCenterClient cmdclient(cmdprotocol);

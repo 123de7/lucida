@@ -19,5 +19,6 @@ template/ -- Contains a stand-alone OpenEphyra wrapper for use in any applicatio
 
 ## Building and starting the QA service
 Navigate to `lucida` or `template` and follow the README
+To change the Database used, edit `common/qa-runtime-config.inc`
 
 Last Modified: 07/01/15
